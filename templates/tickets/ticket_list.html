@@ -1,0 +1,44 @@
+{% include "home/navbar.html" %}
+<html>
+<head>
+<style>
+header {
+    padding: 10px;
+    font-size: 28px;
+    color: black;
+    padding-left: 40px;
+}
+div {
+    background-color: lavender;
+    width: 800px;
+    padding: 10px;
+    border: 3px solid black;
+    border-radius: 5px;
+    text-align: left;
+}
+ul {
+    font-size: 16px;
+    text-decoration: underline;
+}
+li {
+    font-size: 16px;
+    list-style: none;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+</style>
+</head>
+<center><br><h1 style="font-family:Georgia">YOUR TICKETS<h1>
+    {% for ticket in tickets %}
+    <a href="{% url "tickets:ticket-detail" ticket.id %}">
+    <div>
+        <header>Ticket #{{ ticket.zendesk_id }}</header>
+            <li>Type: {{ ticket.type }}</li>
+            <li>Status: {{ ticket.status }}</li>
+            <li>Priority: {{ ticket.priority }}</li>
+            <li>Assignee: {{ ticket.assignee }}</li>
+    </div>
+    </a><br>
+    {% endfor %}
+</center>
+</html>

@@ -1,0 +1,57 @@
+{% include "home/navbar.html" %}
+<html>
+<head>
+<style>
+header {
+    padding: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    color: black;
+    padding-left: 40px;
+}
+div {
+    background-color: lavender;
+    width: 800px;
+    padding: 10px;
+    border: 3px solid black;
+    border-radius: 5px;
+    text-align: left;
+}
+ul {
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+li {
+    font-size: 16px;
+    list-style: none;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+</style>
+</head><br>
+
+<div>
+    <a href="{{ ticket.url }}"><header>Ticket #{{ ticket.zendesk_id }}</header></a>
+    <ul>-> GENERAL INFORMATION</ul>
+        <li><b>Type:</b> {{ ticket.type }}</li>
+        <li><b>Status:</b> {{ ticket.status }}</li>
+        <li><b>Priority:</b> {{ ticket.priority }}</li>
+    <ul>-> CONTENT</ul>
+        <li><b>Subject:</b> {{ ticket.subject }}</li>
+        <li><b>Description:</b> {{ ticket.description }}</li>
+    <ul>-> RELATED PEOPLE</ul>
+        <li><b>Submitter:</b> {{ ticket.submitter }}</li>
+        <li><b>Requester:</b> {{ ticket.requester }}</li>
+        <li><b>Assignee:</b> {{ ticket.assignee }}</li>
+    <ul>-> COMMENTS</ul>
+        {% if comments %}
+            {% for comment in comments %}
+            <li style="list-style: circle"><b>{{ comment.author }}</b> left a comment:<br> --> {{ comment.body }}</li><br>
+            {% endfor %}
+        {% else %}
+            <li>No comments!</li>
+        {% endif %}
+    <br>
+</div>
+</html>
