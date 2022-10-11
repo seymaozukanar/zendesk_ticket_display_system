@@ -8,6 +8,7 @@ from django.views.generic import CreateView
 
 
 class SignUpView(SuccessMessageMixin, CreateView):
+
     model = User
     form_class = UserCreationForm
     template_name = "users/signup.html"
@@ -21,6 +22,7 @@ class SignUpView(SuccessMessageMixin, CreateView):
 
 
 class LogInView(SuccessMessageMixin, LoginView):
+
     next_page = reverse_lazy("tickets:ticket-list")
     template_name = "users/login.html"
 

@@ -17,8 +17,8 @@ class Ticket(models.Model):
     requester = models.CharField(max_length=255, blank=True, null=True)
     assignee = models.CharField(max_length=255, blank=True, null=True)
 
-    def __str__(self, *args, **kwargs):
-        return f'{self.zendesk_id}'
+    def __str__(self) -> str:
+        return f"{self.zendesk_id}"
 
 
 class Comment(models.Model):

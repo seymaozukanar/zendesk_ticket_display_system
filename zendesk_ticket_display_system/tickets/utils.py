@@ -1,11 +1,12 @@
-from zenpy import Zenpy
 from dateutil import parser
-
+from django.db.models import QuerySet
 from zendesk_ticket_display_system import constants
-from .models import Ticket, Comment
+from zenpy import Zenpy
+
+from .models import Comment, Ticket
 
 
-def collect_user_tickets(user):
+def collect_user_tickets(user) -> QuerySet:
 
     creds = {"email": constants.zendesk_email,
             "token": constants.zendesk_api_token,
